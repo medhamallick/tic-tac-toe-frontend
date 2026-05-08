@@ -26,6 +26,9 @@ const App = () => {
   const handleClick = (index) => {
 
     if (winner || isDraw) return;
+    if ((isXTurn && player !== "X") ||(!isXTurn && player !== "O")) {
+      return;
+    }
     if (board[index] !== "") return;
 
     const copyBoard = [...board];
@@ -62,19 +65,24 @@ const App = () => {
 
 
 
-  const restartGame = () => {
+  // const restartGame = () => {
 
-    setBoard([
-      "", "", "",
-      "", "", "",
-      "", "", "",
-    ]);
+  //   setBoard([
+  //     "", "", "",
+  //     "", "", "",
+  //     "", "", "",
+  //   ]);
 
-    setWinner(null);
-    setIsDraw(false);
-    setIsXTurn(true);
-  };
+  //   setWinner(null);
+  //   setIsDraw(false);
+  //   setIsXTurn(true);
+  // };
   
+  const restartGame = () => {
+    socket.emit("restartGame");
+  };
+
+
   useEffect(() => {
     socket.emit("message", "Hello from frontend");
     socket.on("receiveMove", (data) => {
@@ -82,7 +90,24 @@ const App = () => {
       setIsXTurn(data.isXTurn);
       setWinner(data.winner);
       setIsDraw(data.isDraw);
-    })
+    });
+    socket.on("playerAssignment", (symbol) => {
+      setPlayer(symbol);
+    });
+    socket.on("gameRestarted", () => {
+      setBoard([
+        "", "", "",
+        "", "", "",
+        "", "", "",
+      ]);
+      setWinner(null);
+      setIsDraw(false);
+      setIsXTurn(true);
+    });
+    return () => {
+      socket.off("receiveMove");
+      socket.off("playerAssignment");
+    };
   }, []);
   
 
@@ -90,6 +115,7 @@ const App = () => {
 
     <div className="min-h-screen bg-gray-900 flex flex-col justify-center items-center">
       <h1 className="text-white text-4xl font-bold mb-7">Tic Tac Toe</h1>
+      <h2 className="text-white text-xl mb-4">You are: {player}</h2>
 
       <h1 className="text-white text-3xl font-bold mb-6">
         {/* {winner ? `Winner: ${winner}` : `Turn: ${isXTurn ? "X" : "O"}`} */}
