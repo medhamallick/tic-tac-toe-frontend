@@ -1,12 +1,11 @@
-const Square = ({ value, onClick }) => {
-
+const Square = ({ cell, handleClick, index }) => {
   return (
 
     <div
-      onClick={onClick}
+      onClick={() => handleClick(index)}
       className="w-24 h-24 bg-gray-800 border border-gray-600 flex justify-center items-center text-4xl font-bold cursor-pointer text-white"
     >
-      {value}
+      {cell}
     </div>
 
   );

@@ -10,8 +10,9 @@ const Board = ({ board, handleClick }) => {
 
         <Square
           key={index}
-          value={cell}
-          onClick={() => handleClick(index)}
+          cell={cell}
+          index={index}
+          handleClick={handleClick}
         />
 
       ))}

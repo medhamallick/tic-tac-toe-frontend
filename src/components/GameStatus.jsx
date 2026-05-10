@@ -18,8 +18,7 @@ const GameStatus = ({
           ? `Winner: ${winner}`
           : isDraw
           ? "Match Draw"
-          : `Turn: ${isXTurn ? "X" : "O"}`
-        }
+          : `Turn: ${isXTurn ? "X" : "O"}`}
 
       </h1>
     </>

@@ -12,17 +12,9 @@ const winningPatterns = [
 export const checkWinner = (board) => {
 
   for (let pattern of winningPatterns) {
-
     const [a, b, c] = pattern;
-
-    if (
-      board[a] &&
-      board[a] === board[b] &&
-      board[a] === board[c]
-    ) {
-
+    if (board[a] &&board[a] === board[b] &&board[a] === board[c]) {
       return board[a];
-
     }
   }
 
