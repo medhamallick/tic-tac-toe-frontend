@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { socket } from "../socket";
 import { checkWinner } from "../utils/checkWinner";
 
-const useGameLogic = () => {
+const useMultiplayerLogic  = () => {
 
   // board state
   const [board, setBoard] = useState([
@@ -76,6 +76,10 @@ const useGameLogic = () => {
 
   // socket listeners
   useEffect(() => {
+    // the user actually wants multiplayer
+    socket.connect();
+
+
     // socket.emit("message", "Hello from frontend");
     
     // receive updated board from server
@@ -88,8 +92,12 @@ const useGameLogic = () => {
 
     // assign X or O to player
     socket.on("playerAssignment", (symbol) => {
+      console.log("Assigned Player:", symbol);
       setPlayer(symbol);
     });
+    // socket.on("playerAssignment", (symbol) => {
+    //   setPlayer(symbol);
+    // });
 
     socket.on("gameRestarted", () => {
     console.log("Restart event received in frontend");
@@ -112,6 +120,9 @@ const useGameLogic = () => {
     };
 
   }, []);
+
+
+  console.log(player);
   // export everything
   return {
     board,
@@ -124,4 +135,4 @@ const useGameLogic = () => {
   };
 };
 
-export default useGameLogic;
+export default useMultiplayerLogic ;

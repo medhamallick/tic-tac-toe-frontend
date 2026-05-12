@@ -1,5 +1,5 @@
 const GameStatus = ({
-  player,
+  // player,
   winner,
   isDraw,
   isXTurn,
@@ -8,9 +8,9 @@ const GameStatus = ({
   return (
 
     <>
-      <h2 className="text-white text-xl mb-4">
+      {/* <h2 className="text-white text-xl mb-4">
         You are: {player}
-      </h2>
+      </h2> */}
 
       <h1 className="text-white text-3xl font-bold mb-6">
 

@@ -3,7 +3,7 @@ const Square = ({ cell, handleClick, index }) => {
 
     <div
       onClick={() => handleClick(index)}
-      className="w-24 h-24 bg-gray-800 border border-gray-600 flex justify-center items-center text-4xl font-bold cursor-pointer text-white"
+      className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-800 border border-gray-600 flex justify-center items-center text-4xl font-bold cursor-pointer text-white"
     >
       {cell}
     </div>
