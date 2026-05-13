@@ -1,25 +1,7 @@
-// const Home = ({setGameMode }) => {
-//   return (
-//     <div className='bg-gray-500'>
-//         <div>
-//             <h1>Tic Tac Toe</h1>
-//             <div>
-//                 <button onClick={handleClick}
-//                 className='mt-6 px-6 py-2 bg-blue-500 hover:bg-blue-700 active:bg-blue-700 text-white font-semibold rounded-lg'
-//                 >
-//                     👤 VS 💻
-//                 </button>
-//             </div>
-//         </div>
-
-//     </div>
-//   )
-// }
-
-// export default Home
-
+import { useNavigate } from "react-router-dom";
 
 const Home = ({ setGameMode }) => {
+  const navigate = useNavigate();
 
   return (
 
@@ -34,7 +16,7 @@ const Home = ({ setGameMode }) => {
 
         {/* VS Computer */}
         <button
-          onClick={() => setGameMode("single")}
+          onClick={() => navigate("/computer")}
           className=" w-full py-3 bg-blue-600 hover:bg-blue-700 active:bg-bl text-lg font-semibold rounded-xl transition-all duration-200"
         >
           👤 VS 💻
@@ -42,7 +24,7 @@ const Home = ({ setGameMode }) => {
 
         {/* Multiplayer */}
         <button
-          onClick={() => setGameMode("multi")}
+          onClick={() => navigate("/multiplayer")}
           className="w-full py-3 bg-green-600 hover:bg-green-700 active:bg-green-80 text-white text-lg font-semibold rounded-xl transition-all duration-200"
         >
           👤 VS 👤

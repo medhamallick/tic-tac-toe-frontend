@@ -22,7 +22,7 @@ const SinglePlayer = () => {
     >
 
       <h1 className=" text-white text-4xl sm:text-5xl font-bold mb-6">
-        Single Player
+        Computer
       </h1>
 
       <GameStatus
