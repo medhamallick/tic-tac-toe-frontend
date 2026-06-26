@@ -6,14 +6,7 @@ const GameStatus = ({
 }) => {
 
   return (
-
-    <>
-      {/* <h2 className="text-white text-xl mb-4">
-        You are: {player}
-      </h2> */}
-
       <h1 className="text-white text-3xl font-bold mb-6">
-
         {winner
           ? `Winner: ${winner}`
           : isDraw
@@ -21,7 +14,6 @@ const GameStatus = ({
           : `Turn: ${isXTurn ? "X" : "O"}`}
 
       </h1>
-    </>
 
   );
 };
