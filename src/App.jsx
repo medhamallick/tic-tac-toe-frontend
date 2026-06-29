@@ -5,7 +5,10 @@ import Home from "./pages/Home";
 import Computer from "./pages/Computer";
 import Users from "./pages/Users";
 import GameRoom from "./pages/GameRoom";
-// import GameInvitePopup from "./components/GameInvitePopup";
+import Profile from "./components/Profile";
+import EditProfile from "./pages/EditProfile";
+import UserProfile from "./pages/UserProfile";
+
 
 const App = () => {
 
@@ -38,9 +41,22 @@ const App = () => {
             element={<Users />}
           />
           <Route
+              path="profile"
+              element={<Profile />}
+          />
+          <Route
+              path="edit-profile"
+              element={<EditProfile />}
+          />
+          <Route
               path="game/:roomId"
               element={<GameRoom />}
           />
+          <Route
+              path="user/:userId"
+              element={<UserProfile />}
+          />
+
         </Route>
       </Routes>
     </BrowserRouter>

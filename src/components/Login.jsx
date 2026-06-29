@@ -47,7 +47,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#020617] via-[#07152f] to-[#0f172a] flex justify-center items-center px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#020617] via-[#07152f] to-[#0f172a] flex justify-center items-center px-4 relative">
+        <h1 className="absolute top-6 left-6 text-white text-4xl md:text-3xl font-bold">
+            Tic Tac Toe
+        </h1>
       <div className="w-full max-w-md bg-white/10 backdrop-blur-lg border border-white/10 shadow-2xl rounded-3xl p-8">
         <h2 className="text-white text-5xl font-bold text-center mb-8">
             {isLoginForm ? "Login" : "Sign Up"}

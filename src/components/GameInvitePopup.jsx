@@ -57,13 +57,26 @@ const GameInvitePopup = () => {
     const acceptInvite = async (inviteObj) => {
         try{
             await api.post(`/game/accept/${inviteObj._id}`);
-            socket.emit("acceptInviteSocket",inviteObj);
+            // socket.emit("acceptInviteSocket",inviteObj);
+            socket.emit("acceptInviteSocket", {
+                roomId: inviteObj.roomId,
+                fromUserId:
+                    typeof inviteObj.fromUserId === "object"
+                        ? inviteObj.fromUserId._id
+                        : inviteObj.fromUserId,
+                toUserId:
+                    typeof inviteObj.toUserId === "object"
+                        ? inviteObj.toUserId._id
+                        : inviteObj.toUserId,
+            });
             setInvite(null);
         }
         catch (err) {
             console.log(err);
         }
     };
+
+    
     const rejectInvite = async (inviteObj) => {
         try {
             await api.post(`/game/decline/${inviteObj._id}`);
